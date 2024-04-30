@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d471v24bjrky"]
+[gd_scene load_steps=6 format=3 uid="uid://d471v24bjrky"]
 
+[ext_resource type="Script" path="res://level_1.gd" id="1_8cnco"]
 [ext_resource type="PackedScene" uid="uid://dunip6jemxpxp" path="res://plataforma.tscn" id="1_krmwk"]
 [ext_resource type="PackedScene" uid="uid://chc7lxhlbf4s0" path="res://jogador.tscn" id="2_cb6xt"]
 [ext_resource type="PackedScene" uid="uid://oxflner1htda" path="res://moeda.tscn" id="2_ex0xa"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2sx8"]
+size = Vector2(127, 337)
+
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_8cnco")
 metadata/_edit_lock_ = true
 
 [node name="Mapa" type="Node2D" parent="."]
@@ -17,7 +22,11 @@ position = Vector2(569, 602)
 z_index = -1
 position = Vector2(-402, 568)
 
+[node name="Plataforma3" parent="Mapa" instance=ExtResource("1_krmwk")]
+position = Vector2(1539, 565)
+
 [node name="Moedas" type="Node2D" parent="Mapa"]
+metadata/_edit_lock_ = true
 
 [node name="Moeda" parent="Mapa/Moedas" instance=ExtResource("2_ex0xa")]
 position = Vector2(300, 450)
@@ -31,8 +40,27 @@ position = Vector2(500, 450)
 [node name="Moeda4" parent="Mapa/Moedas" instance=ExtResource("2_ex0xa")]
 position = Vector2(600, 450)
 
+[node name="FimArea1" type="Area2D" parent="Mapa"]
+position = Vector2(-836, 363)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea1"]
+shape = SubResource("RectangleShape2D_y2sx8")
+metadata/_edit_lock_ = true
+
+[node name="FimArea2" type="Area2D" parent="Mapa"]
+position = Vector2(1977, 361)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea2"]
+shape = SubResource("RectangleShape2D_y2sx8")
+metadata/_edit_lock_ = true
+
 [node name="Personagens" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="Jogador" parent="Personagens" instance=ExtResource("2_cb6xt")]
 position = Vector2(184, 525)
+
+[connection signal="body_entered" from="Mapa/FimArea1" to="." method="_on_fim_area_1_body_entered"]
+[connection signal="body_entered" from="Mapa/FimArea2" to="." method="_on_fim_area_1_body_entered"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm2jwl2jponr4"]
+
+[ext_resource type="PackedScene" uid="uid://dunip6jemxpxp" path="res://plataforma.tscn" id="1_kdypv"]
+[ext_resource type="PackedScene" uid="uid://chc7lxhlbf4s0" path="res://jogador.tscn" id="2_01wgm"]
+[ext_resource type="PackedScene" uid="uid://oxflner1htda" path="res://moeda.tscn" id="2_bxjbi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r24in"]
+size = Vector2(69, 283)
+
+[node name="Level2" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Mapa" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Plataforma" parent="Mapa" instance=ExtResource("1_kdypv")]
+position = Vector2(560, 605)
+
+[node name="Moedas" type="Node2D" parent="Mapa"]
+metadata/_edit_lock_ = true
+
+[node name="Moeda" parent="Mapa/Moedas" instance=ExtResource("2_bxjbi")]
+position = Vector2(150, 500)
+
+[node name="Moeda2" parent="Mapa/Moedas" instance=ExtResource("2_bxjbi")]
+position = Vector2(1000, 500)
+
+[node name="Borda1" type="StaticBody2D" parent="Mapa/Moedas"]
+position = Vector2(27, 460)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/Moedas/Borda1"]
+shape = SubResource("RectangleShape2D_r24in")
+metadata/_edit_lock_ = true
+
+[node name="Borda2" type="StaticBody2D" parent="Mapa/Moedas"]
+position = Vector2(1070, 462)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/Moedas/Borda2"]
+shape = SubResource("RectangleShape2D_r24in")
+metadata/_edit_lock_ = true
+
+[node name="Personagens" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Jogador" parent="Personagens" instance=ExtResource("2_01wgm")]
+position = Vector2(483, 537)
