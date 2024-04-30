@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://oxflner1htda"]
+
+[ext_resource type="Texture2D" uid="uid://c1mst65mbs2vy" path="res://moeda.png" id="1_8vh8i"]
+[ext_resource type="Script" path="res://moeda.gd" id="1_oge83"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68d50"]
+radius = 18.0
+height = 60.0
+
+[node name="Moeda" type="Area2D"]
+script = ExtResource("1_oge83")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8vh8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_68d50")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
