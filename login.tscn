@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmd684ufivd8k"]
+
+[ext_resource type="Script" path="res://login.gd" id="1_ufd8a"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ufd8a")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="lblEmail" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -144.5
+offset_right = 26.0
+offset_bottom = -121.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "EMAIL"
+metadata/_edit_lock_ = true
+
+[node name="txtEmail" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -113.5
+offset_right = 148.0
+offset_bottom = -82.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "nome@dominio.com"
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="lblSenha" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -52.5
+offset_right = 26.5
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SENHA"
+metadata/_edit_lock_ = true
+
+[node name="txtSenha" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -15.5
+offset_right = 146.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+secret = true
+metadata/_edit_lock_ = true
+
+[node name="btnLogin" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = 55.5
+offset_right = 81.5
+offset_bottom = 124.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOGIN"
+metadata/_edit_lock_ = true
+
+[node name="lblError" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 133.5
+offset_right = 20.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+timeout = 5.0
+
+[connection signal="pressed" from="Panel/btnLogin" to="." method="_on_btn_login_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
