@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm2jwl2jponr4"]
+[gd_scene load_steps=6 format=3 uid="uid://dm2jwl2jponr4"]
 
+[ext_resource type="Script" path="res://level_2.gd" id="1_aj5gs"]
 [ext_resource type="PackedScene" uid="uid://dunip6jemxpxp" path="res://plataforma.tscn" id="1_kdypv"]
 [ext_resource type="PackedScene" uid="uid://chc7lxhlbf4s0" path="res://jogador.tscn" id="2_01wgm"]
 [ext_resource type="PackedScene" uid="uid://oxflner1htda" path="res://moeda.tscn" id="2_bxjbi"]
@@ -8,6 +9,7 @@
 size = Vector2(69, 283)
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_aj5gs")
 metadata/_edit_lock_ = true
 
 [node name="Mapa" type="Node2D" parent="."]
