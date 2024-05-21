@@ -19,7 +19,11 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		if (data != "Falha ao realizar o login!"):
 			get_tree().change_scene_to_file.bind("res://level_1.tscn").call_deferred()
 		else:
-			$Panel/lblError.text = "Falha no Login"
+			info_login("Falha no Login")
 	else:
-		print("Problemas no servidor")
+		info_login("Problemas no servidor")
 		$Panel/btnLogin.disabled = false
+		
+func info_login(info) -> void:
+	$Panel/lblError.text = info
+	print(info)
