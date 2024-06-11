@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d471v24bjrky"]
+[gd_scene load_steps=7 format=3 uid="uid://d471v24bjrky"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_8cnco"]
 [ext_resource type="PackedScene" uid="uid://dunip6jemxpxp" path="res://plataforma.tscn" id="1_krmwk"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2sx8"]
 size = Vector2(127, 337)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx0h7"]
+size = Vector2(10257, 474)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_8cnco")
@@ -42,6 +45,7 @@ position = Vector2(600, 450)
 
 [node name="FimArea1" type="Area2D" parent="Mapa"]
 position = Vector2(-836, 363)
+monitorable = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea1"]
@@ -49,18 +53,37 @@ shape = SubResource("RectangleShape2D_y2sx8")
 metadata/_edit_lock_ = true
 
 [node name="FimArea2" type="Area2D" parent="Mapa"]
-position = Vector2(1977, 361)
-metadata/_edit_lock_ = true
+position = Vector2(16, 365)
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea2"]
 shape = SubResource("RectangleShape2D_y2sx8")
+metadata/_edit_lock_ = true
+
+[node name="FimArea3" type="Area2D" parent="Mapa"]
+position = Vector2(1950, 384)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea3"]
+shape = SubResource("RectangleShape2D_y2sx8")
+metadata/_edit_lock_ = true
+
+[node name="FimArea4" type="Area2D" parent="Mapa"]
+position = Vector2(-15, 1737)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/FimArea4"]
+position = Vector2(8, 1)
+shape = SubResource("RectangleShape2D_xx0h7")
 metadata/_edit_lock_ = true
 
 [node name="Personagens" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="Jogador" parent="Personagens" instance=ExtResource("2_cb6xt")]
-position = Vector2(184, 525)
+position = Vector2(-399, 419)
 
 [connection signal="body_entered" from="Mapa/FimArea1" to="." method="_on_fim_area_1_body_entered"]
 [connection signal="body_entered" from="Mapa/FimArea2" to="." method="_on_fim_area_1_body_entered"]
+[connection signal="body_entered" from="Mapa/FimArea3" to="." method="_on_fim_area_1_body_entered"]
+[connection signal="body_entered" from="Mapa/FimArea4" to="." method="_on_fim_area_sair_mapa_body_entered"]
