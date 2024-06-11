@@ -1,8 +1,12 @@
 extends CharacterBody2D
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready() -> void:
+	$UI/lblMensagem.text = ""
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -19,5 +23,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func coleta_moedas():
+func coleta_moedas() -> void:
 	$UI/lblMoedas.text = str(GameGlobal.moedas)
+
+func mensagem(texto) -> void:
+	$UI/lblMensagem.text = texto
+	await get_tree().create_timer(5.0).timeout
+	$UI/lblMensagem.text = ""
