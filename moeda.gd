@@ -11,6 +11,9 @@ func _on_body_entered(body):
 		# - Chamar Grupo UI (Interface do Usuário), atualizar as moedas coletadas
 		get_tree().call_group("UI", "coleta_moedas")
 		
+		# - Verificador do Level
+		get_tree().call_group("levels", "verificador_level", "moedas", "")
+
 		# - Audio
 		$AudioStreamPlayer2D.play()
 		await $AudioStreamPlayer2D.finished

@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r24in"]
 size = Vector2(69, 283)
 
-[node name="Level2" type="Node2D"]
+[node name="Level2" type="Node2D" groups=["levels"]]
 script = ExtResource("1_aj5gs")
 metadata/_edit_lock_ = true
 
